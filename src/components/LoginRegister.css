@@ -50,7 +50,7 @@ body {
 /* Estructura principal */
 .main-container {
     display: flex;
-    min-height: calc(100vh - 60px); /* Ajusta el tama�o de la vista menos el header */
+    min-height: calc(100vh - 60px); /
 }
 
 /* Barra lateral */
@@ -97,48 +97,48 @@ body {
         }
 
 .login {
-    background-color: white; /* Color de fondo */
-    padding: 20px 350px; /* Padding para la secci�n de inicio de sesi�n */
+    background-color: white;
+    padding: 20px 350px; 
 }
 
 .login-actions {
-    display: flex; /* Usar flexbox para alinear el enlace y el bot�n */
-    align-items: center; /* Centrar verticalmente */
+    display: flex; 
+    align-items: center;
 }
 
     .login-actions a {
-        font-size: 10px; /* Cambia el tama�o de la fuente seg�n sea necesario */
+        font-size: 10px; 
         padding: 20px 70px;
     }
 
     .login-actions button {
-        margin-left: 20px; /* Espacio entre el enlace y el bot�n */
-        padding: 8px 2px; /* Ajusta el padding para hacerlo m�s peque�o */
-        font-size: 14px; /* Cambia el tama�o de la fuente del bot�n seg�n sea necesario */
-        border-radius: 4px; /* Bordes redondeados (opcional) */
+        margin-left: 20px; 
+        padding: 8px 2px; 
+        font-size: 14px; 
+        border-radius: 4px; 
     }
 
 .register {
-    background-color: white; /* Color de fondo */
-    padding: 20px 350px; /* Padding para la secci�n de inicio de sesi�n */
+    background-color: white;
+    padding: 20px 350px; 
 }
 
 .form-groupR {
-    display: flex; /* Usa Flexbox para alinear los elementos */
-    align-items: center; /* Alinea verticalmente al centro */
-    margin-bottom: 15px; /* Espacio entre cada campo */
+    display: flex; 
+    align-items: center; 
+    margin-bottom: 15px;
 }
 
     .form-groupR label {
-        width: 150px; /* Ancho fijo para las etiquetas para que los inputs se alineen */
-        margin-right: 10px; /* Espacio entre la etiqueta y el input */
-        text-align: right; /* Alinea el texto de la etiqueta a la derecha */
+        width: 150px; 
+        margin-right: 10px; 
+        text-align: right; 
     }
 
 
     .form-groupR select {
-        flex: 1; /* Permite que el campo ocupe el espacio restante */
-        padding: 5px; /* Espaciado interno para el input */
+        flex: 1; 
+        padding: 5px;
         border: 1px solid #ddd;
         border-radius: 4px;
     }
@@ -150,7 +150,7 @@ body {
 }
 
     .terms label {
-        margin-left: 10px; /* Espacio entre la casilla y el texto */
+        margin-left: 10px; 
     }
 
 .remember {
@@ -164,8 +164,8 @@ body {
 }
 
 .remember input {
-    margin-right: 80px; /* Espacio entre el checkbox y la etiqueta */
-    margin-left: -80px; /* Mueve el checkbox hacia la izquierda */
+    margin-right: 80px; 
+    margin-left: -80px; 
 }
 /* Contenido */
 .content {
@@ -179,22 +179,22 @@ h2 {
 }
 
 .form-group {
-    display: flex; /* Usar flexbox para alinear elementos */
-    align-items: center; /* Centrar verticalmente los elementos */
-    margin-bottom: 20px; /* Espacio entre los campos */
+    display: flex; 
+    align-items: center; 
+    margin-bottom: 20px;
 }
 
     .form-group label {
-        margin-right: 10px; /* Espacio entre la etiqueta y el campo de entrada */
-        white-space: nowrap; /* Evitar que el texto se envuelva */
-        width: 100px; /* Ancho fijo para los labels (ajusta seg�n tus necesidades) */
+        margin-right: 10px; 
+        white-space: nowrap; 
+        width: 100px; 
     }
 
     .form-group input {
-        flex: 1; /* Hacer que el campo de entrada ocupe el espacio restante */
-        padding: 10px; /* Espaciado interno del campo */
-        border: 1px solid #ddd; /* Borde del campo */
-        border-radius: 4px; /* Esquinas redondeadas */
+        flex: 1; 
+        padding: 10px; 
+        border: 1px solid #ddd; 
+        border-radius: 4px; 
     }
 
 form {
@@ -202,8 +202,8 @@ form {
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 40px;
-    border: 2px solid #101111; /* Grosor y color del borde */
-    border-radius: 8px; /* Esquinas redondeadas */
+    border: 2px solid #101111; 
+    border-radius: 8px; 
 }
 
     form label {

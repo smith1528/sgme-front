@@ -5,7 +5,7 @@ import LoginRegister from './components/LoginRegister'; // Importa el componente
 function App() {
     return (
         <div className="App">
-            <LoginRegister /> {/* Renderiza el componente de login/registro */}
+            <LoginRegister /> 
         </div>
     );
 }
