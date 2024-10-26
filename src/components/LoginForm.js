@@ -15,7 +15,7 @@ function LoginForm() {
         </div>
         <div className="remember">
           <input type="checkbox" id="remember" />
-          <label htmlFor="remember">Recuérdame</label>
+          <label htmlFor="remember">Recuerdame</label>
         </div>
         <div className="login-actions">
           <button type="submit">Iniciar sesión</button>
