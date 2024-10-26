@@ -24,7 +24,7 @@
 
 .line {
     width: 100%;
-    height: 2px; /* Grosor central de la línea */
+    height: 2px; /* Grosor central de la lï¿½nea */
     background: linear-gradient(to right, transparent, #888, transparent);
     margin: 20px 0;
 }
@@ -50,7 +50,7 @@ body {
 /* Estructura principal */
 .main-container {
     display: flex;
-    min-height: calc(100vh - 60px); /* Ajusta el tamaño de la vista menos el header */
+    min-height: calc(100vh - 60px); /* Ajusta el tamaï¿½o de la vista menos el header */
 }
 
 /* Barra lateral */
@@ -98,29 +98,29 @@ body {
 
 .login {
     background-color: white; /* Color de fondo */
-    padding: 20px 350px; /* Padding para la sección de inicio de sesión */
+    padding: 20px 350px; /* Padding para la secciï¿½n de inicio de sesiï¿½n */
 }
 
 .login-actions {
-    display: flex; /* Usar flexbox para alinear el enlace y el botón */
+    display: flex; /* Usar flexbox para alinear el enlace y el botï¿½n */
     align-items: center; /* Centrar verticalmente */
 }
 
     .login-actions a {
-        font-size: 10px; /* Cambia el tamaño de la fuente según sea necesario */
+        font-size: 10px; /* Cambia el tamaï¿½o de la fuente segï¿½n sea necesario */
         padding: 20px 70px;
     }
 
     .login-actions button {
-        margin-left: 20px; /* Espacio entre el enlace y el botón */
-        padding: 8px 2px; /* Ajusta el padding para hacerlo más pequeño */
-        font-size: 14px; /* Cambia el tamaño de la fuente del botón según sea necesario */
+        margin-left: 20px; /* Espacio entre el enlace y el botï¿½n */
+        padding: 8px 2px; /* Ajusta el padding para hacerlo mï¿½s pequeï¿½o */
+        font-size: 14px; /* Cambia el tamaï¿½o de la fuente del botï¿½n segï¿½n sea necesario */
         border-radius: 4px; /* Bordes redondeados (opcional) */
     }
 
 .register {
     background-color: white; /* Color de fondo */
-    padding: 20px 350px; /* Padding para la sección de inicio de sesión */
+    padding: 20px 350px; /* Padding para la secciï¿½n de inicio de sesiï¿½n */
 }
 
 .form-groupR {
@@ -187,7 +187,7 @@ h2 {
     .form-group label {
         margin-right: 10px; /* Espacio entre la etiqueta y el campo de entrada */
         white-space: nowrap; /* Evitar que el texto se envuelva */
-        width: 100px; /* Ancho fijo para los labels (ajusta según tus necesidades) */
+        width: 100px; /* Ancho fijo para los labels (ajusta segï¿½n tus necesidades) */
     }
 
     .form-group input {
@@ -238,7 +238,7 @@ form {
     margin-top: 10px;
 }
 
-/* Pie de página */
+/* Pie de pï¿½gina */
 .footer {
     background-color: #333;
     color: white;
