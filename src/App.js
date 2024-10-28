@@ -4,7 +4,7 @@ import LoginRegister from './components/LoginRegister'; // Importa el componente
 
 function App() {
     return (
-        <div className="App">
+        <div className="App SGME">
             <LoginRegister /> 
         </div>
     );

@@ -8,7 +8,7 @@ function LoginRegister() {
   return (
     <>
       <header className="header">
-        <h1>Inicio Sesión/Registrarse</h1>
+        <h1>Inicio Sesión / Registrarse</h1>
       </header>
       <div className="main-container">
         <Sidebar />
