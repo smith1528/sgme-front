@@ -6,7 +6,7 @@ function MainMenu() {
     <div className="main-menu">
       {/* Encabezado */}
       <header className="header">
-        <h1>Menú principal</h1>
+        <h1>Menu principal</h1>
         <div className="search-bar">
           <input type="text" placeholder="Buscar..." />
           <button>Buscar</button>
@@ -18,13 +18,13 @@ function MainMenu() {
         {/* Barra lateral */}
         <aside className="sidebar">
           <div className="logo">
-                      <img src={logo1} alt="SG.M.E" />
+                      <img src={logo1} alt="S.G.M.E" />
           </div>
           <nav>
             <ul>
               <li><span className="icon">&#128209;</span> Categoria de cursos</li>
               <li><span className="icon">&#128218;</span> Cursos en progreso</li>
-              <li><span className="icon">&#9881;</span> Configuraciin</li>
+              <li><span className="icon">&#9881;</span> Configuracion</li>
               <li><span className="icon">&#128100;</span> Agregar perfil</li>
               <li><span className="icon">&#10067;</span> Ayuda</li>
             </ul>
@@ -55,7 +55,7 @@ function MainMenu() {
         </div>
         <div className="footer-bottom">
           <div className="footer-logo">
-            <img src="./path-to-footer-logo.png" alt="SG.M.E" />
+                      <img src={logo1} alt="S.G.M.E" />
           </div>
           <div className="footer-info">
             <p>Agente y Contact Center</p>
