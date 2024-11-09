@@ -10,15 +10,15 @@ function Sidebar() {
     return (
         <aside className="sidebar">
             <div className="logo">
-                <img src={logo1} alt="SG.M.E" />
+                <img src={logo1} alt="S.G.M.E" />
                 <div className="line"></div>
             </div>
             <nav>
                 <ul>
                     <li>
                         <div className="logoC">
-                            <img src={logo2} alt="Configuración" className="icon" />
-                            <a href="#">Configuración</a>
+                            <img src={logo2} alt="Configuracion" className="icon" />
+                            <a href="#">Configuracion</a>
                         </div>
                     </li>
                     <li>
