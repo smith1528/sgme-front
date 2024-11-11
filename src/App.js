@@ -1,30 +1,41 @@
 import React, { useState } from 'react';
-import './App.css'; // CSS principal del proyecto
-import LoginRegister from './components/LoginRegister';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import MainMenu from './components/MainMenu';
+import CategoryCourses from './components/CategoryCourses';
 import UserProfile from './components/UserProfile';
-import MainMenu from './components/MainMenu'; 
-
-
+import LoginRegister from './components/LoginRegister';
+import CoursesInProgress from './components/CoursesInProgress'; // Asegúrate de importar el componente
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para alternar la vista
+    const navigate = useNavigate(); // Hook para navegación
+
+    // Función para manejar login/logout
+    const handleLoginLogout = () => {
+        setIsLoggedIn(!isLoggedIn);
+        if (!isLoggedIn) {
+            navigate('/menu-principal'); // Redirigir al Menú Principal
+        } else {
+            navigate('/register'); // Redirigir al formulario de registro
+        }
+    };
 
     return (
-        <div className="App SGME">
-            {/* Mostrar el componente correspondiente según el estado de isLoggedIn */}
-            {isLoggedIn ? (
-                <>
-                    <UserProfile />
-                    <MainMenu />
-                </>
-            ) : (
-                <LoginRegister />
-            )}
+        <div>
+            <Routes>
+                <Route path="/register" element={<LoginRegister setIsLoggedIn={setIsLoggedIn} />} />
+                <Route path="/menu-principal" element={isLoggedIn ? <MainMenu /> : <LoginRegister setIsLoggedIn={setIsLoggedIn} />} />
+                <Route path="/categoria-cursos" element={<CategoryCourses />} />
+                <Route path="/user-profile" element={<UserProfile />} />
+                <Route path="/curso-en-progreso" element={<CoursesInProgress />} /> 
+            </Routes>
 
-            {/* Botón para cambiar entre vistas (solo para pruebas, puedes manejar esto según la lógica de tu aplicación) */}
-            <button onClick={() => setIsLoggedIn(!isLoggedIn)}>
-                {isLoggedIn ? 'Logout' : 'Login'}
-            </button>
+            {/* Botón para alternar entre login y logout */}
+            <div className="App SGME">
+                <button onClick={handleLoginLogout}>
+                    {isLoggedIn ? 'Logout' : 'Login'}
+                </button>
+            </div>
         </div>
     );
 }
