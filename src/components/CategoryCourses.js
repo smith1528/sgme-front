@@ -22,7 +22,7 @@ function CategoryCourses() {
                     <nav>
                         <ul>
                             <li><Link to="/categoria-cursos"><button>📑 Categoria de cursos</button></Link></li>
-                            <li><Link to="/user-profile"><button>📚 Cursos en progreso</button></Link></li>
+                            <li><Link to="curso-en-progreso"><button>📚 Cursos en progreso</button></Link></li>
                             <li><Link to="/user-profile"><button>⚙ Configuracion de usuarios</button></Link></li>
                             <li><Link to="/menu-principal"><button>❓ Ayuda</button></Link></li>
                         </ul>
