@@ -1,19 +1,26 @@
-// src/components/UserProfile.js
 import React from 'react';
 import './UserProfile.css';
 import userImage from '../img/user.png'; // Cambia esta ruta según tu imagen de perfil
 import logo from '../img/1.png'; // Cambia esta ruta según tu logo
+import { useNavigate } from 'react-router-dom'; // Importamos el hook useNavigate
 
 function UserProfile() {
+    const navigate = useNavigate(); // Inicializamos el hook de navegación
+
+    // Función para manejar la navegación hacia MainMenu cuando se hace clic en "Regresar"
+    const handleRegresar = () => {
+        navigate('/menu-principal'); // Redirige al Menú Principal
+    };
+
     return (
         <div className="container">
             {/* Barra lateral */}
             <div className="sidebar">
                 <img src={logo} alt="Logo" className="logo" /> {/* Logo actualizado */}
-                <a href="#">Configuracion</a>
-                <a href="#">Editar Perfil</a>
-                <a href="#">Ayuda</a>
-                <a href="#">Regresar</a>
+                <button onClick={() => navigate('/menu-principal')} className="sidebar-button">Configuración</button>
+                <button onClick={() => navigate('/user-profile')} className="sidebar-button">Editar Perfil</button>
+                <button onClick={() => navigate('/menu-principal')} className="sidebar-button">Ayuda</button>
+                <button onClick={handleRegresar} className="sidebar-button">Regresar</button> {/* Redirige al Menú Principal */}
             </div>
 
             {/* Contenido principal */}
@@ -38,7 +45,7 @@ function UserProfile() {
 
                 {/* Pie de página */}
                 <div className="footer">
-                    <span className="link">Terminos</span> |
+                    <span className="link">Términos</span> |
                     <span className="link">Privacidad</span> |
                     <span className="link">Enlace Reservado</span>
                 </div>

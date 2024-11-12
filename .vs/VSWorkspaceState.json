@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\public",
+    "\\src",
+    "\\src\\components"
   ],
-  "SelectedNode": "\\C:\\Users\\Bairon\\OneDrive\\Escritorio\\Frontend",
+  "SelectedNode": "\\src\\components\\CoursesInProgress.js",
   "PreviewInSolutionExplorer": false
 }
