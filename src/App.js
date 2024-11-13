@@ -1,10 +1,11 @@
+// src/App.js
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import MainMenu from './components/MainMenu';
 import CategoryCourses from './components/CategoryCourses';
 import UserProfile from './components/UserProfile';
 import LoginRegister from './components/LoginRegister';
-import CoursesInProgress from './components/CoursesInProgress'; // Asegúrate de importar el componente
+import CoursesInProgress from './components/CoursesInProgress';
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para alternar la vista
@@ -23,11 +24,15 @@ function App() {
     return (
         <div>
             <Routes>
+                {/* Redirigir la ruta raíz ("/") a "/register" */}
+                <Route path="/" element={<Navigate to="/register" />} />
+
+                {/* Definición de rutas */}
                 <Route path="/register" element={<LoginRegister setIsLoggedIn={setIsLoggedIn} />} />
-                <Route path="/menu-principal" element={isLoggedIn ? <MainMenu /> : <LoginRegister setIsLoggedIn={setIsLoggedIn} />} />
+                <Route path="/menu-principal" element={isLoggedIn ? <MainMenu /> : <Navigate to="/register" />} />
                 <Route path="/categoria-cursos" element={<CategoryCourses />} />
                 <Route path="/user-profile" element={<UserProfile />} />
-                <Route path="/curso-en-progreso" element={<CoursesInProgress />} /> 
+                <Route path="/curso-en-progreso" element={<CoursesInProgress />} />
             </Routes>
 
             {/* Botón para alternar entre login y logout */}

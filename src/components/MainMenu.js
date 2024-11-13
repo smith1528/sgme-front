@@ -22,7 +22,7 @@ function MainMenu() {
     
 
     const handleAyuda = () => {
-        navigate('/ayuda'); // Redirige a la página de ayuda
+        navigate('/menu-principal'); // Redirige a la página de ayuda
     };
 
     return (
