@@ -1,6 +1,6 @@
-// src/components/DataPolicyModal.js
+
 import React from 'react';
-import './DataPolicyModal.css'; // Asegúrate de tener un archivo CSS para estilos
+import './DataPolicyModal.css'; 
 
 const DataPolicyModal = ({ onClose }) => (
     <div className="modal-overlay">

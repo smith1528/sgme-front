@@ -6,6 +6,7 @@ import CategoryCourses from './components/CategoryCourses';
 import UserProfile from './components/UserProfile';
 import LoginRegister from './components/LoginRegister';
 import CoursesInProgress from './components/CoursesInProgress';
+import ForgotPassword from './components/ForgotPassword';
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para alternar la vista
@@ -33,6 +34,7 @@ function App() {
                 <Route path="/categoria-cursos" element={<CategoryCourses />} />
                 <Route path="/user-profile" element={<UserProfile />} />
                 <Route path="/curso-en-progreso" element={<CoursesInProgress />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
             </Routes>
 
             {/* Botón para alternar entre login y logout */}

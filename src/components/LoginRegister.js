@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Sidebar from './Sidebar';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
-import { auth, googleProvider, signInWithPopup } from '../firebaseConfig'; // Asegúrate de tener esto en tu firebaseConfig
+import { auth, googleProvider, signInWithPopup } from '../firebaseConfig'; 
 
 function LoginRegister() {
     const [rememberMe, setRememberMe] = useState(false);
@@ -12,7 +12,7 @@ function LoginRegister() {
     const handleGoogleSignIn = async () => {
         try {
             await signInWithPopup(auth, googleProvider);
-            // Manejar redirección o estado después del inicio de sesión
+           
         } catch (err) {
             setError(err.message);
         }

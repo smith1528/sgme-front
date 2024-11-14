@@ -1,5 +1,5 @@
-// src/components/RegisterForm.js
 import React, { useState } from 'react';
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
 import { auth, googleProvider, signInWithPopup } from '../firebaseConfig';
 import DataPolicyModal from './DataPolicyModal';
 
@@ -14,6 +14,13 @@ const RegisterForm = () => {
     const [loading, setLoading] = useState(false);
     const [showPolicyModal, setShowPolicyModal] = useState(false);
 
+    // Estados para mostrar/ocultar contraseña
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+    const togglePasswordVisibility = () => setShowPassword(!showPassword);
+    const toggleConfirmPasswordVisibility = () => setShowConfirmPassword(!showConfirmPassword);
+
     const handleGoogleSignIn = async () => {
         setLoading(true);
         setError(null);
@@ -26,35 +33,27 @@ const RegisterForm = () => {
         }
     };
 
-    const validatePassword = (password) => {
-        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-        return passwordPattern.test(password);
-    };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError(null);
 
-        // Validación de nombre
         if (!name || !/^[a-zA-Z\s]+$/.test(name)) {
             setError('Por favor, ingresa un nombre válido.');
             return;
         }
 
-        // Validación de correo
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailPattern.test(email)) {
             setError('El correo debe estar en formato válido.');
             return;
         }
 
-        // Validación de contraseña
-        if (!validatePassword(password)) {
-            setError('La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.');
+        const passwordPattern = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+        if (!passwordPattern.test(password)) {
+            setError('La contraseña debe tener al menos 8 caracteres, una mayúscula y un número.');
             return;
         }
 
-        // Coincidencia de contraseñas
         if (password !== confirmPassword) {
             setError('Las contraseñas no coinciden.');
             return;
@@ -73,7 +72,6 @@ const RegisterForm = () => {
             setConfirmPassword('');
             setUserType('Usuario');
             setAgreed(false);
-            setError(null); // Reiniciar errores si todo es correcto
         } catch (err) {
             setError(err.message);
         } finally {
@@ -87,47 +85,81 @@ const RegisterForm = () => {
             {error && <p style={{ color: 'red' }}>{error}</p>}
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Nombre:</label>
-                    <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                    />
+                    <label>
+                        Nombre:
+                        <input
+                            type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required
+                        />
+                    </label>
                 </div>
                 <div>
-                    <label>Correo:</label>
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
+                    <label>
+                        Correo:
+                        <input
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </label>
+                </div>
+                <div style={{ position: 'relative' }}>
+                    <label>
+                        Contraseña:
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                        <div
+                            style={{
+                                position: 'absolute',
+                                right: '10px',
+                                top: '50%',
+                                transform: 'translateY(-50%)',
+                                cursor: 'pointer',
+                            }}
+                            onClick={togglePasswordVisibility}
+                        >
+                            {showPassword ? <FaEyeSlash /> : <FaEye />}
+                        </div>
+                    </label>
+                </div>
+                <div style={{ position: 'relative' }}>
+                    <label>
+                        Repetir Contraseña:
+                        <input
+                            type={showConfirmPassword ? "text" : "password"}
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            required
+                        />
+                        <div
+                            style={{
+                                position: 'absolute',
+                                right: '10px',
+                                top: '50%',
+                                transform: 'translateY(-50%)',
+                                cursor: 'pointer',
+                            }}
+                            onClick={toggleConfirmPasswordVisibility}
+                        >
+                            {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+                        </div>
+                    </label>
                 </div>
                 <div>
-                    <label>Contraseña:</label>
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Repetir Contraseña:</label>
-                    <input
-                        type="password"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Tipo de Usuario:</label>
-                    <select value={userType} onChange={(e) => setUserType(e.target.value)}>
-                        <option value="Usuario">Usuario</option>
-                        <option value="Administrador">Administrador</option>
-                    </select>
+                    <label>
+                        Tipo de Usuario:
+                        <select value={userType} onChange={(e) => setUserType(e.target.value)}>
+                            <option value="Usuario">Usuario</option>
+                            <option value="Administrador">Administrador</option>
+                        </select>
+                    </label>
                 </div>
                 <div>
                     <label>

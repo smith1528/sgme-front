@@ -53,7 +53,8 @@ function LoginForm() {
                 </div>
                 <div className="login-actions">
                     <button type="submit">Iniciar sesión</button>
-                    <a href="#">¿Olvidaste tu contraseña?</a>
+                    <a href="/forgot-password">¿Olvidaste tu contraseña?</a>
+
                 </div>
             </form>
         </section>
