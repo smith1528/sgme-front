@@ -1,6 +1,7 @@
-// RegisterForm.js
+// src/components/RegisterForm.js
 import React, { useState } from 'react';
 import { auth, googleProvider, signInWithPopup } from '../firebaseConfig';
+import DataPolicyModal from './DataPolicyModal';
 
 const RegisterForm = () => {
     const [name, setName] = useState('');
@@ -11,13 +12,13 @@ const RegisterForm = () => {
     const [agreed, setAgreed] = useState(false);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [showPolicyModal, setShowPolicyModal] = useState(false);
 
     const handleGoogleSignIn = async () => {
         setLoading(true);
         setError(null);
         try {
             await signInWithPopup(auth, googleProvider);
-            // Manejar redirección o estado después del inicio de sesión
         } catch (err) {
             setError(err.message);
         } finally {
@@ -25,54 +26,54 @@ const RegisterForm = () => {
         }
     };
 
+    const validatePassword = (password) => {
+        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        return passwordPattern.test(password);
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError(null);
 
-        // Validación del nombre
+        // Validación de nombre
         if (!name || !/^[a-zA-Z\s]+$/.test(name)) {
             setError('Por favor, ingresa un nombre válido.');
             return;
         }
 
-        // Validación del correo
+        // Validación de correo
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailPattern.test(email)) {
             setError('El correo debe estar en formato válido.');
             return;
         }
 
-        // Validación de la contraseña
-        const passwordPattern = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
-        if (!passwordPattern.test(password)) {
-            setError('La contraseña debe tener al menos 8 caracteres, una mayúscula y un número.');
+        // Validación de contraseña
+        if (!validatePassword(password)) {
+            setError('La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.');
             return;
         }
 
-        // Validación de la coincidencia de la contraseña
+        // Coincidencia de contraseñas
         if (password !== confirmPassword) {
             setError('Las contraseñas no coinciden.');
             return;
         }
 
-        // Validación de los términos
         if (!agreed) {
             setError('Debes estar de acuerdo con los términos y condiciones.');
             return;
         }
 
-        // Aquí puedes manejar la creación de usuario con correo y contraseña
         try {
             setLoading(true);
-            // await createUserWithEmailAndPassword(auth, email, password);
-            // Manejar redirección o estado después del registro
-            // Limpiar los campos después de un registro exitoso
             setName('');
             setEmail('');
             setPassword('');
             setConfirmPassword('');
             setUserType('Usuario');
             setAgreed(false);
+            setError(null); // Reiniciar errores si todo es correcto
         } catch (err) {
             setError(err.message);
         } finally {
@@ -86,57 +87,47 @@ const RegisterForm = () => {
             {error && <p style={{ color: 'red' }}>{error}</p>}
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>
-                        Nombre:
-                        <input
-                            type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            required
-                        />
-                    </label>
+                    <label>Nombre:</label>
+                    <input
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                    />
                 </div>
                 <div>
-                    <label>
-                        Correo:
-                        <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                        />
-                    </label>
+                    <label>Correo:</label>
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
                 </div>
                 <div>
-                    <label>
-                        Contraseña:
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
-                    </label>
+                    <label>Contraseña:</label>
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
                 </div>
                 <div>
-                    <label>
-                        Repetir Contraseña:
-                        <input
-                            type="password"
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                            required
-                        />
-                    </label>
+                    <label>Repetir Contraseña:</label>
+                    <input
+                        type="password"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        required
+                    />
                 </div>
                 <div>
-                    <label>
-                        Tipo de Usuario:
-                        <select value={userType} onChange={(e) => setUserType(e.target.value)}>
-                            <option value="Usuario">Usuario</option>
-                            <option value="Administrador">Administrador</option>
-                        </select>
-                    </label>
+                    <label>Tipo de Usuario:</label>
+                    <select value={userType} onChange={(e) => setUserType(e.target.value)}>
+                        <option value="Usuario">Usuario</option>
+                        <option value="Administrador">Administrador</option>
+                    </select>
                 </div>
                 <div>
                     <label>
@@ -146,9 +137,11 @@ const RegisterForm = () => {
                             onChange={(e) => setAgreed(e.target.checked)}
                             required
                         />
-                        Estoy de acuerdo con los términos de uso y políticas de privacidad
+                        Estoy de acuerdo con los{' '}
+                        <span onClick={() => setShowPolicyModal(true)} style={{ color: 'blue', textDecoration: 'underline', cursor: 'pointer' }}>
+                            términos de uso y políticas de privacidad
+                        </span>
                     </label>
-                    <a href="/terminos" target="_blank" rel="noopener noreferrer">Ver términos</a>
                 </div>
                 <button type="submit" disabled={loading}>
                     {loading ? 'Cargando...' : 'Registrar'}
@@ -157,13 +150,10 @@ const RegisterForm = () => {
             <button onClick={handleGoogleSignIn} disabled={loading} style={{ marginTop: '10px' }}>
                 {loading ? 'Cargando...' : 'Iniciar sesión con Google'}
             </button>
+
+            {showPolicyModal && <DataPolicyModal onClose={() => setShowPolicyModal(false)} />}
         </div>
     );
 };
 
 export default RegisterForm;
-
-
-
-
-
