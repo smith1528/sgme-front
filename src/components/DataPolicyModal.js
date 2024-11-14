@@ -5,7 +5,7 @@ import './DataPolicyModal.css'; // Asegúrate de tener un archivo CSS para estilo
 const DataPolicyModal = ({ onClose }) => (
     <div className="modal-overlay">
         <div className="modal-window">
-            <h2>Política de Tratamiento de Datos</h2>
+            <h2>Politica de Tratamiento de Datos</h2>
             <p>
                 1. Finalidad del Tratamiento
                 Recopilamos y tratamos datos personales para:
