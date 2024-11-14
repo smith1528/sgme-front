@@ -1,33 +1,33 @@
 import React from 'react';
 import './MainMenu.css';
 import logo1 from '../img/1.png';
-import { useNavigate } from 'react-router-dom'; // Importamos el hook useNavigate
+import { useNavigate } from 'react-router-dom'; 
 
 function MainMenu() {
-    const navigate = useNavigate(); // Inicializamos el hook de navegación
+    const navigate = useNavigate();
 
-    // Funciones para manejar los clics en los botones
+    
     const handleCategoriaCursos = () => {
-        navigate('/categoria-cursos'); // Redirige a la página de categoría de cursos
+        navigate('/categoria-cursos'); 
     };
 
     const handleCursosProgreso = () => {
-        navigate('/curso-en-progreso'); // Redirige a la página de cursos en progreso
+        navigate('/curso-en-progreso'); 
     };
 
     const handleConfiguracion = () => {
-        navigate('/user-profile'); // Redirige a la página de configuración de usuarios (UserProfile)
+        navigate('/user-profile'); 
     };
 
     
 
     const handleAyuda = () => {
-        navigate('/menu-principal'); // Redirige a la página de ayuda
+        navigate('/menu-principal'); 
     };
 
     return (
         <div className="main-menu">
-            {/* Encabezado */}
+            
             <header className="header">
                 <h1>Menu principal</h1>
                 <div className="search-bar">
@@ -36,9 +36,9 @@ function MainMenu() {
                 </div>
             </header>
 
-            {/* Contenedor principal */}
+           s
             <div className="container">
-                {/* Barra lateral */}
+                
                 <aside className="sidebar">
                     <div className="logo">
                         <img src={logo1} alt="S.G.M.E" />
@@ -73,9 +73,9 @@ function MainMenu() {
                     </div>
                 </aside>
 
-                {/* Área de contenido central */}
+               }
                 <main className="content">
-                    {/* Aquí puedes agregar el contenido principal */}
+                   
                 </main>
             </div>
 
@@ -90,7 +90,7 @@ function MainMenu() {
                             <li><a href="#">Secondary link</a></li>
                         </ul>
                     </div>
-                    {/* Agrega más columnas si es necesario */}
+                    
                 </div>
                 <div className="footer-bottom">
                     <div className="footer-logo">

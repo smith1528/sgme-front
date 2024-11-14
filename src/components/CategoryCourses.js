@@ -1,5 +1,5 @@
 ﻿import React, { useState } from 'react';
-import { Link } from 'react-router-dom';  // Importa Link para la navegación
+import { Link } from 'react-router-dom';  
 import './CategoryCourses.css';
 import courseImage1 from '../img/net.png';
 import courseImage2 from '../img/tiktok.png';
@@ -29,14 +29,14 @@ function CategoryCourses() {
                     </nav>
                 </aside>
 
-                {/* Contenido principal */}
+               
                 <div className="main-content">
                     <header className="header">
                         <h1>Selecciona un Curso</h1>
                     </header>
 
                     <div className="courses-container">
-                        {/* Cuadro de Curso 1 */}
+                       
                         <div className="course-card" onClick={() => handleCourseSelection(1)}>
                             <img src={courseImage1} alt="Curso 1" className="course-image" />
                             <div className="course-title">Curso 1</div>
@@ -47,7 +47,6 @@ function CategoryCourses() {
                             </div>
                         </div>
 
-                        {/* Cuadro de Curso 2 */}
                         <div className="course-card" onClick={() => handleCourseSelection(2)}>
                             <img src={courseImage2} alt="Curso 2" className="course-image" />
                             <div className="course-title">Curso 2</div>
@@ -58,7 +57,7 @@ function CategoryCourses() {
                             </div>
                         </div>
 
-                        {/* Cuadro de Curso 3 */}
+                        
                         <div className="course-card" onClick={() => handleCourseSelection(3)}>
                             <img src={courseImage3} alt="Curso 3" className="course-image" />
                             <div className="course-title">Curso 3</div>
@@ -69,7 +68,7 @@ function CategoryCourses() {
                             </div>
                         </div>
 
-                        {/* Cuadro de Curso 4 */}
+                       
                         <div className="course-card" onClick={() => handleCourseSelection(4)}>
                             <img src={courseImage4} alt="Curso 4" className="course-image" />
                             <div className="course-title">Curso 4</div>
@@ -80,7 +79,7 @@ function CategoryCourses() {
                             </div>
                         </div>
 
-                        {/* Cuadro de Curso 5 */}
+                    
                         <div className="course-card" onClick={() => handleCourseSelection(5)}>
                             <img src={courseImage5} alt="Curso 5" className="course-image" />
                             <div className="course-title">Curso 5</div>
@@ -92,7 +91,7 @@ function CategoryCourses() {
                         </div>
                     </div>
 
-                    {/* Pie de página */}
+                    
                     <footer className="footer">
                         <button className="submit-btn">Enviar selección</button>
                     </footer>

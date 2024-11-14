@@ -1,6 +1,7 @@
-// RegisterForm.js
 import React, { useState } from 'react';
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
 import { auth, googleProvider, signInWithPopup } from '../firebaseConfig';
+import DataPolicyModal from './DataPolicyModal';
 
 const RegisterForm = () => {
     const [name, setName] = useState('');
@@ -11,13 +12,20 @@ const RegisterForm = () => {
     const [agreed, setAgreed] = useState(false);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [showPolicyModal, setShowPolicyModal] = useState(false);
+
+    // Estados para mostrar/ocultar contraseña
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+    const togglePasswordVisibility = () => setShowPassword(!showPassword);
+    const toggleConfirmPasswordVisibility = () => setShowConfirmPassword(!showConfirmPassword);
 
     const handleGoogleSignIn = async () => {
         setLoading(true);
         setError(null);
         try {
             await signInWithPopup(auth, googleProvider);
-            // Manejar redirección o estado después del inicio de sesión
         } catch (err) {
             setError(err.message);
         } finally {
@@ -29,44 +37,35 @@ const RegisterForm = () => {
         e.preventDefault();
         setError(null);
 
-        // Validación del nombre
         if (!name || !/^[a-zA-Z\s]+$/.test(name)) {
             setError('Por favor, ingresa un nombre válido.');
             return;
         }
 
-        // Validación del correo
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailPattern.test(email)) {
             setError('El correo debe estar en formato válido.');
             return;
         }
 
-        // Validación de la contraseña
         const passwordPattern = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
         if (!passwordPattern.test(password)) {
             setError('La contraseña debe tener al menos 8 caracteres, una mayúscula y un número.');
             return;
         }
 
-        // Validación de la coincidencia de la contraseña
         if (password !== confirmPassword) {
             setError('Las contraseñas no coinciden.');
             return;
         }
 
-        // Validación de los términos
         if (!agreed) {
             setError('Debes estar de acuerdo con los términos y condiciones.');
             return;
         }
 
-        // Aquí puedes manejar la creación de usuario con correo y contraseña
         try {
             setLoading(true);
-            // await createUserWithEmailAndPassword(auth, email, password);
-            // Manejar redirección o estado después del registro
-            // Limpiar los campos después de un registro exitoso
             setName('');
             setEmail('');
             setPassword('');
@@ -107,26 +106,50 @@ const RegisterForm = () => {
                         />
                     </label>
                 </div>
-                <div>
+                <div style={{ position: 'relative' }}>
                     <label>
                         Contraseña:
                         <input
-                            type="password"
+                            type={showPassword ? "text" : "password"}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
                         />
+                        <div
+                            style={{
+                                position: 'absolute',
+                                right: '10px',
+                                top: '50%',
+                                transform: 'translateY(-50%)',
+                                cursor: 'pointer',
+                            }}
+                            onClick={togglePasswordVisibility}
+                        >
+                            {showPassword ? <FaEyeSlash /> : <FaEye />}
+                        </div>
                     </label>
                 </div>
-                <div>
+                <div style={{ position: 'relative' }}>
                     <label>
                         Repetir Contraseña:
                         <input
-                            type="password"
+                            type={showConfirmPassword ? "text" : "password"}
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             required
                         />
+                        <div
+                            style={{
+                                position: 'absolute',
+                                right: '10px',
+                                top: '50%',
+                                transform: 'translateY(-50%)',
+                                cursor: 'pointer',
+                            }}
+                            onClick={toggleConfirmPasswordVisibility}
+                        >
+                            {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+                        </div>
                     </label>
                 </div>
                 <div>
@@ -146,9 +169,11 @@ const RegisterForm = () => {
                             onChange={(e) => setAgreed(e.target.checked)}
                             required
                         />
-                        Estoy de acuerdo con los términos de uso y políticas de privacidad
+                        Estoy de acuerdo con los{' '}
+                        <span onClick={() => setShowPolicyModal(true)} style={{ color: 'blue', textDecoration: 'underline', cursor: 'pointer' }}>
+                            términos de uso y políticas de privacidad
+                        </span>
                     </label>
-                    <a href="/terminos" target="_blank" rel="noopener noreferrer">Ver términos</a>
                 </div>
                 <button type="submit" disabled={loading}>
                     {loading ? 'Cargando...' : 'Registrar'}
@@ -157,13 +182,10 @@ const RegisterForm = () => {
             <button onClick={handleGoogleSignIn} disabled={loading} style={{ marginTop: '10px' }}>
                 {loading ? 'Cargando...' : 'Iniciar sesión con Google'}
             </button>
+
+            {showPolicyModal && <DataPolicyModal onClose={() => setShowPolicyModal(false)} />}
         </div>
     );
 };
 
 export default RegisterForm;
-
-
-
-
-

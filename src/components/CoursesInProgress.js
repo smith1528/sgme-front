@@ -1,8 +1,7 @@
-﻿// src/components/CoursesInProgress.js
+﻿
 import React from 'react';
-import { Link } from 'react-router-dom';  // Importa Link para la navegación
-import Sidebar from './Sidebar';  // Asegúrate de tener el Sidebar importado
-import './CoursesInProgress.css';  // Archivo CSS para la página de Cursos en Progreso
+import { Link } from 'react-router-dom';  
+import './CoursesInProgress.css';  
 import courseImage5 from '../img/facebook.jpeg';
 import courseImage1 from '../img/net.png';
 
@@ -22,14 +21,14 @@ function CoursesInProgress() {
                     </nav>
                 </aside>
 
-            {/* Contenido principal */}
+           
             <div className="main-content">
-                {/* Encabezado */}
+              
                 <div className="header">
                     Cursos en Progreso
                 </div>
 
-                {/* Curso 1: Netflix */}
+               
                 <div className="course-card">
                     <div className="course-info">
                         <h3>Netflix: Como ver contenido de forma optima</h3>
@@ -44,7 +43,7 @@ function CoursesInProgress() {
                     </div>
                 </div>
 
-                {/* Curso 2: Facebook */}
+              
                 <div className="course-card">
                     <div className="course-info">
                         <h3>Facebook: La mejor forma de manejar tu feed</h3>
